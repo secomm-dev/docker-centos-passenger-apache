@@ -67,3 +67,14 @@ export APR_CONFIG=/usr/local/apr-1.5.2/bin/apr-1-config \
 export HTTPD=/usr/local/apache/bin/httpd \
 export APXS2=/usr/local/apache/bin/apxs \
 rbenv global 2.3.1; passenger-install-apache2-module -a"
+
+EXPOSE 80
+
+VOLUME ["/usr/local/apache/htdocs"]
+WORKDIR /usr/local/apache/htdocs
+
+# Simple startup script to avoid some issues observed with container restart
+ADD run-httpd.sh /run-httpd.sh
+RUN chmod -v +x /run-httpd.sh
+
+CMD ["/run-httpd.sh"]
