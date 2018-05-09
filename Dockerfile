@@ -6,7 +6,7 @@ RUN rpm --rebuilddb && yum install -y bzip2 gcc make gcc-c++ wget perl \
 
 # Install epel
 RUN sed -i '0,/enabled=.*/{s/enabled=.*/enabled=1/}' /etc/yum.repos.d/CentOS-Base.repo
-RUN wget http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-8.noarch.rpm \
+RUN wget http://dl.fedoraproject.org/pub/epel/7/x86_64/Packages/e/epel-release-7-11.noarch.rpm \
     && rpm -ivh epel-release-7-8.noarch.rpm
 RUN yum update -y && yum clean all
 
