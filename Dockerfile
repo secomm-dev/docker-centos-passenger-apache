@@ -1,15 +1,14 @@
 FROM centos:7.4.1708
 
-RUN yum -y update
 RUN rpm --rebuilddb && yum install -y bzip2 gcc make gcc-c++ wget perl \
     readline readline-devel zlib zlib-devel curl curl-devel tk-devel \
-    openssl-devel gdbm-devel bison git which tar postgresql-contrib postgresql-devel
+    openssl-devel gdbm-devel bison git which tar postgresql-contrib postgresql-devel && yum clean all
 
 # Install epel
 RUN sed -i '0,/enabled=.*/{s/enabled=.*/enabled=1/}' /etc/yum.repos.d/CentOS-Base.repo
 RUN wget http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-8.noarch.rpm \
     && rpm -ivh epel-release-7-8.noarch.rpm
-RUN yum update -y
+RUN yum update -y && yum clean all
 
 # Install Ruby
 ADD ruby-2.3.1.tar.gz /usr/local/src
