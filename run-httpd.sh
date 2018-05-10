@@ -4,4 +4,4 @@ set -e
 # Apache gets grumpy about PID files pre-existing
 rm -f /usr/local/apache/logs/httpd.pid
 
-exec httpd -DFOREGROUND
+exec /usr/local/apache/bin/httpd -DFOREGROUND

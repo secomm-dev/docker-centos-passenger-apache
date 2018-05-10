@@ -68,6 +68,9 @@ export HTTPD=/usr/local/apache/bin/httpd \
 export APXS2=/usr/local/apache/bin/apxs \
 rbenv global 2.3.1; passenger-install-apache2-module -a"
 
+# Remove /usr/local/src
+rm -rf /usr/local/src && yum clear all 
+
 EXPOSE 80
 
 VOLUME ["/usr/local/apache/htdocs"]
